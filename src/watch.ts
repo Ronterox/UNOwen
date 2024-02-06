@@ -5,7 +5,10 @@ function watch() {
         console.log(`Message from server: ${event.data}`);
         if (event.data === "update") location.reload();
     };
-    ws.onclose = () => { console.log("WebSocket closed"); };
+    ws.onclose = () => { 
+        console.log("WebSocket closed"); 
+        setTimeout(() => { watch(); }, 1000);
+    };
     ws.onerror = (event) => { console.error("WebSocket error observed:", event); }
 }
 

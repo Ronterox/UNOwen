@@ -1,7 +1,7 @@
 import { Synth } from "tone";
+import { watch } from "./watch";
 import type { Note } from "tone/build/esm/core/type/NoteUnits";
 import P5 from "p5";
-import { watch } from "./watch";
 
 watch();
 

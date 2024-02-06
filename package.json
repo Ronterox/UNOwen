@@ -9,7 +9,9 @@
         "typescript": "^5.0.0"
     },
     "scripts": {
-        "dev": "bun build --watch src/index.ts --outfile=src/bundle.js & go run . && fg"
+        "dev": "bun run build & bun start && fg",
+        "build": "bun build --watch src/index.ts --outfile=src/bundle.js",
+        "start": "go run ."
     },
     "dependencies": {
         "@types/p5": "^1.7.6",
