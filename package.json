@@ -1,0 +1,19 @@
+{
+    "name": "unowen",
+    "module": "index.ts",
+    "type": "module",
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "scripts": {
+        "dev": "bun build --watch src/index.ts --outfile=src/bundle.js & go run . && fg"
+    },
+    "dependencies": {
+        "@types/p5": "^1.7.6",
+        "p5": "^1.9.0",
+        "tone": "^14.7.77"
+    }
+}
