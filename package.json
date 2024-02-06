@@ -9,9 +9,10 @@
         "typescript": "^5.0.0"
     },
     "scripts": {
-        "dev": "bun run build & bun start && fg",
-        "build": "bun build --watch src/index.ts --outfile=src/bundle.js",
-        "start": "go run ."
+        "dev": "bun watch & bun start && fg",
+        "watch": "bun build --watch src/index.ts --outfile=src/bundle.js",
+        "start": "go run .",
+        "build": "NODE_ENV=production bun build src/index.ts --minify --outfile=src/bundle.js"
     },
     "dependencies": {
         "@types/p5": "^1.7.6",

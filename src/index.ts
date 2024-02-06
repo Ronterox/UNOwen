@@ -3,7 +3,7 @@ import { watch } from "./watch";
 import type { Note } from "tone/build/esm/core/type/NoteUnits";
 import P5 from "p5";
 
-watch();
+if (process.env.NODE_ENV === "development") watch();
 
 const synth = new Synth().toDestination();
 let x = 50, y = 50;
