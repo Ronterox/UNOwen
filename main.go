@@ -53,13 +53,13 @@ func main() {
 		fmt.Println(err)
 	}
 
-    lastFileModTime := make(map[string]time.Time)
+	lastFileModTime := make(map[string]time.Time)
 
 	for _, file := range files {
-        info, err := file.Info()
-        if err != nil {
-            fmt.Println(err)
-        }
+		info, err := file.Info()
+		if err != nil {
+			fmt.Println(err)
+		}
 		lastFileModTime[file.Name()] = info.ModTime()
 	}
 
@@ -68,13 +68,13 @@ func main() {
 			time.Sleep(1 * time.Second)
 			modifed := false
 			for _, file := range files {
-                info, err := file.Info()
-                if err != nil {
-                    fmt.Println(err)
-                }
+				info, err := file.Info()
+				if err != nil {
+					fmt.Println(err)
+				}
 
 				modTime := info.ModTime()
-                if fileName := file.Name(); modTime != lastFileModTime[fileName] {
+				if fileName := file.Name(); modTime != lastFileModTime[fileName] {
 					fmt.Println("File changed: ", fileName)
 					lastFileModTime[fileName] = modTime
 					modifed = true
@@ -85,14 +85,14 @@ func main() {
 					err := client.WriteMessage(websocket.TextMessage, []byte("update"))
 					if err != nil {
 						fmt.Println(err)
-                        client.Close()
-                        delete(clients, client)
+						client.Close()
+						delete(clients, client)
 					}
 				}
 			}
 		}
 	}()
 
-    fmt.Println("Server started at http://localhost:8080")
+	fmt.Println("Server started at http://localhost:8080")
 	http.ListenAndServe(":8080", nil)
 }
