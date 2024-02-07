@@ -13,8 +13,8 @@ var clients = make(map[*websocket.Conn]bool)
 
 func handleWebsocket(w http.ResponseWriter, r *http.Request) {
 	wgUpgrader := websocket.Upgrader{
-		ReadBufferSize:  1024,
-		WriteBufferSize: 1024,
+		ReadBufferSize:  32,
+		WriteBufferSize: 32,
 	}
 
 	conn, err := wgUpgrader.Upgrade(w, r, nil)
@@ -93,6 +93,13 @@ func main() {
 		}
 	}()
 
-	fmt.Println("Server started at http://localhost:8080")
-	http.ListenAndServe(":8080", nil)
+    args := os.Args[1:]
+    port := ":8080"
+
+    if len(args) > 0 {
+        port = fmt.Sprintf(":%v", args[0])
+    }
+
+	fmt.Printf("Server started at http://localhost%v\n", port)
+	http.ListenAndServe(port, nil)
 }

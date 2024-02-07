@@ -2,7 +2,7 @@ let timeout: number = 0;
 const BACKOFF = 500;
 
 function watch() {
-    const ws = new WebSocket("ws://localhost:8080/ws");
+    const ws = new WebSocket(`ws://${location.host}/ws`);
 
     ws.onopen = () => { 
         ws.send("Ricardo"); 
